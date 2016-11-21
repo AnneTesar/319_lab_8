@@ -18,13 +18,17 @@ fragment PHONE: 'PHONE>' TEXT_PHONE '</PHONE';
 fragment CREDITCARD: 'CREDITCARD>' TEXT_CREDITCARD '</CREDITCARD';
 fragment ADDRESS: 'ADDRESS>' TEXT '</ADDRESS';
 
-TEXT_EMAIL: SPECIAL_CHAR_A+ SPECIAL_CHAR_B+ '@' SPECIAL_CHAR_A+ SPECIAL_CHAR_B+;
+TEXT_EMAIL: SPECIAL_CHAR_A+ SPECIAL_CHAR_B* SPECIAL_CHAR_A* '@' SPECIAL_CHAR_C;
 SPECIAL_CHAR_A: 'a-z' | 'A-Z' | '0-9' | '-' | '_' | '~' | '!' | '$' | '&' | '\'' | '(' | ')' | '*' | '+' | ',' | ';' | '='| ':';
 SPECIAL_CHAR_B: 'a-z' | 'A-Z' | '0-9' | '-' | '_' | '~' | '!' | '$' | '&' | '\'' | '(' | ')' | '*' | '+' | ',' | ';' | '='| ':' | ".";
+SPECIAL_CHAR_C: 'a-z' | 'A-Z' | '0-9' | '-' | ".";
 //. is okay, as long as it's not first or twice in a row
 //added a period but idk how to limit it to only once
 
-TEXT_DATE: NUM NUM? '/' NUM NUM? '/' NUM NUM NUM NUM;
+TEXT_DATE: DAY '/' MONTH '/' YEAR;
+DAY: [1-31];
+MONTH: [1-12];
+YEAR: [2000-2100];
 NUM: [0-9];
 //need to limit stuff
 
