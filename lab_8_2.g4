@@ -1,16 +1,16 @@
+lexer grammar lab_8_2; 
 
-lexer grammar lab_8_1; 
+JSON: '{' '\r'? JSON_TEXT+
+ '}'{System.out.println("matching rule:" + getText());};
 
-TAG: '<'TAG_TEXT'>'{System.out.println("matching rule:" + getText());};
-
-TAG_TEXT: EMAIL | DATE | PHONE | CREDITCARD | ADDRESS; 
+JSON_TEXT: EMAIL | DATE | PHONE | CREDITCARD | ADDRESS; 
 
 
-fragment EMAIL: 'EMAIL>' TEXT_EMAIL '</EMAIL';
-fragment DATE: 'DATE>' TEXT_DATE '</DATE';
-fragment PHONE: 'PHONE>' TEXT_PHONE '</PHONE';
-fragment CREDITCARD: 'CREDITCARD>' TEXT_CREDITCARD '</CREDITCARD';
-fragment ADDRESS: 'ADDRESS>' TEXT_ADDRESS '</ADDRESS';
+fragment EMAIL: '"EMAIL":' ' '? '"' TEXT_EMAIL '"' ','?;
+fragment DATE: '"DATE":' ' '? '"' TEXT_DATE '"' ','?;
+fragment PHONE: '"PHONE":' ' '? '"' TEXT_PHONE '"' ','?;
+fragment CREDITCARD: '"CREDITCARD":' ' '? '"' TEXT_CREDITCARD '"' ','?;
+fragment ADDRESS: '"ADDRESS":' ' '? '"' TEXT_ADDRESS '"' ','?;
 
 TEXT_EMAIL: EMAIL_CHAR+ '@' EMAIL_CHAR+ '.' EMAIL_CHAR+;
 EMAIL_CHAR: [a-zA-Z0-9-_~!$&'()*+,;=:.]+;
