@@ -18,7 +18,7 @@ fragment PHONE: 'PHONE>' TEXT_PHONE '</PHONE';
 fragment CREDITCARD: 'CREDITCARD>' TEXT_CREDITCARD '</CREDITCARD';
 fragment ADDRESS: 'ADDRESS>' TEXT '</ADDRESS';
 
-TEXT_EMAIL: SPECIAL_CHAR_A+ SPECIAL_CHAR_B '@' SPECIAL_CHAR_A+ SPECIAL_CHAR_B+;
+TEXT_EMAIL: SPECIAL_CHAR_A+ SPECIAL_CHAR_B+ '@' SPECIAL_CHAR_A+ SPECIAL_CHAR_B+;
 SPECIAL_CHAR_A: 'a-z' | 'A-Z' | '0-9' | '-' | '_' | '~' | '!' | '$' | '&' | '\'' | '(' | ')' | '*' | '+' | ',' | ';' | '='| ':';
 SPECIAL_CHAR_B: 'a-z' | 'A-Z' | '0-9' | '-' | '_' | '~' | '!' | '$' | '&' | '\'' | '(' | ')' | '*' | '+' | ',' | ';' | '='| ':' | ".";
 //. is okay, as long as it's not first or twice in a row
